@@ -36,7 +36,7 @@ LLM = 'claude-2.1\n'
 
 if LLM[-1] != '\n':
     LLM += '\n'
-
+    
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 def remove_emojis(data):
     emoj = regex.compile("["
@@ -148,7 +148,7 @@ with driver:
     sleep(1.5)
     # driver.save_screenshot("teste.png")
     # input()
-    driver.find_element(By.CSS_SELECTOR, "#component-87 .scroll-hide").send_keys('Baseando-se no contexto, responda de forma resumida.\\n contexto: \\n' +remove_emojis(text)+'\\nCom base no contexto fornecido, responda: '+QUERY+"\n")
+    driver.find_element(By.CSS_SELECTOR, "#component-87 .scroll-hide").send_keys('contexto: \\n' +remove_emojis(text)+'\\nCom base no contexto fornecido, responda de forma resumida: '+QUERY+"\n")
     sleep(1.5)
     print('\nwaiting...')
     while True:
